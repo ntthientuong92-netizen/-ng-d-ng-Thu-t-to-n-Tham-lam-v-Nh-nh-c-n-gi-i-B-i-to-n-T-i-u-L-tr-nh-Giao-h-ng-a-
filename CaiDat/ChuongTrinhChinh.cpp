@@ -12,8 +12,8 @@ void hienThiMenu() {
     cout << "    HE THONG TOI UU LO TRINH - TIEM BANH GOC BEP ME BAP   \n";
     cout << "========================================================\n";
     cout << "1. Chon bo du lieu (4 don, 8 don, 15 don)\n";
-    cout << "2. Chay thuat toan Tham lam (Greedy)\n";
-    cout << "3. Chay thuat toan Nhanh can (Branch & Bound)\n";
+    cout << "2. Chay thuat toan Tham lam\n";
+    cout << "3. Chay thuat toan Nhanh can\n";
     cout << "4. Do hieu nang va xuat bao cao so sanh\n";
     cout << "0. Thoat chuong trinh\n";
     cout << "========================================================\n";
