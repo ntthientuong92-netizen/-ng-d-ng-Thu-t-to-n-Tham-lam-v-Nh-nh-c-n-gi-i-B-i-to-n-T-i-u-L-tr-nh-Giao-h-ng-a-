@@ -1,0 +1,19 @@
+HƯỚNG DẪN BIÊN DỊCH VÀ CHẠY CHƯƠNG TRÌNH
+Đề tài: Tối ưu Lộ trình Giao hàng Đa điểm - Tiệm bánh "Góc Bếp Mẹ Bắp"
+
+1. Yêu cầu hệ thống:
+- Trình biên dịch C++ (GCC/MinGW cho Windows hoặc g++ cho macOS/Linux).
+- Đảm bảo giữ nguyên cấu trúc thư mục: CaiDat, KhaiBao, DungLieu, KetQua.
+
+2. Hướng dẫn biên dịch (Compile):
+Mở Terminal / Command Prompt tại thư mục gốc (ToiUuGiaoHang_GocBepMeBap) và nhập lệnh sau:
+g++ CaiDat/*.cpp -o ToiUuGiaoHang
+
+3. Hướng dẫn chạy chương trình (Run):
+- Trên Windows: ToiUuGiaoHang.exe
+- Trên macOS/Linux: ./ToiUuGiaoHang
+
+4. Cách sử dụng:
+- Tại Menu chính, nhấn phím 1 để nạp tập dữ liệu (4 đơn, 8 đơn hoặc 15 đơn).
+- Nhấn phím 2 hoặc 3 để xem chi tiết lộ trình và tổng quãng đường của từng thuật toán.
+- Nhấn phím 4 để chương trình tự động đo thời gian chạy và xuất file báo cáo tại thư mục KetQua/BaoCaoSoSanh.csv.
