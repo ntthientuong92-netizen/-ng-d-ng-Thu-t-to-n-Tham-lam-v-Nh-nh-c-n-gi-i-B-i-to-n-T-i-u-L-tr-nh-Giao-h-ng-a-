@@ -1,19 +1,48 @@
-HƯỚNG DẪN BIÊN DỊCH VÀ CHẠY CHƯƠNG TRÌNH
-Đề tài: Tối ưu Lộ trình Giao hàng Đa điểm - Tiệm bánh "Góc Bếp Mẹ Bắp"
+========================================================================
+   HƯỚNG DẪN CÀI ĐẶT VÀ VẬN HÀNH PHẦN MỀM TỐI ƯU LỘ TRÌNH GIAO HÀNG
+           Đề tài: Tiệm bánh "Góc Bếp Mẹ Bắp" - TP.HCM
+========================================================================
 
-1. Yêu cầu hệ thống:
-- Trình biên dịch C++ (GCC/MinGW cho Windows hoặc g++ cho macOS/Linux).
-- Đảm bảo giữ nguyên cấu trúc thư mục: CaiDat, KhaiBao, DungLieu, KetQua.
+I. CHUẨN BỊ TRƯỚC KHI CHẠY
+1. Máy tính cần cài sẵn trình biên dịch C++ (Dev-C++, Code::Blocks, VS Code, hoặc GCC/g++).
+2. Tải toàn bộ thư mục gốc "ToiUuGiaoHang_GocBepMeBap" về máy.
+3. KHÔNG thay đổi tên hoặc di chuyển các thư mục con (DungLieu, KhaiBao, CaiDat, KetQua).
 
-2. Hướng dẫn biên dịch (Compile):
-Mở Terminal / Command Prompt tại thư mục gốc (ToiUuGiaoHang_GocBepMeBap) và nhập lệnh sau:
-g++ CaiDat/*.cpp -o ToiUuGiaoHang
+------------------------------------------------------------------------
+II. CÁC BƯỚC BIÊN DỊCH VÀ MỞ CHƯƠNG TRÌNH
 
-3. Hướng dẫn chạy chương trình (Run):
-- Trên Windows: ToiUuGiaoHang.exe
-- Trên macOS/Linux: ./ToiUuGiaoHang
+CÁCH 1: Dùng Terminal/Command Prompt
+- Bước 1: Mở Terminal/CMD tại thư mục gốc "ToiUuGiaoHang_GocBepMeBap".
+- Bước 2: Gõ lệnh biên dịch sau rồi nhấn Enter:
+    g++ CaiDat/*.cpp -o ToiUuGiaoHang
+- Bước 3: Chạy phần mềm:
+    + Trên Windows:  ToiUuGiaoHang.exe
+    + Trên Mac/Linux: ./ToiUuGiaoHang
 
-4. Cách sử dụng:
-- Tại Menu chính, nhấn phím 1 để nạp tập dữ liệu (4 đơn, 8 đơn hoặc 15 đơn).
-- Nhấn phím 2 hoặc 3 để xem chi tiết lộ trình và tổng quãng đường của từng thuật toán.
-- Nhấn phím 4 để chương trình tự động đo thời gian chạy và xuất file báo cáo tại thư mục KetQua/BaoCaoSoSanh.csv.
+CÁCH 2: Dùng phần mềm Dev-C++ hoặc Code::Blocks
+- Mở file "CaiDat/ChuongTrinhChinh.cpp".
+- Nhấn phím F11 (hoặc nút Build & Run) để chạy trực tiếp.
+
+------------------------------------------------------------------------
+III. HƯỚNG DẪN THAO TÁC TRÊN MENU PHẦN MỀM
+
+Khi giao diện hiện ra, bạn chỉ cần nhập số tương ứng từ phím và nhấn Enter:
+
+* Bước 1 (Chọn dữ liệu):
+  - Nhập phím [1] -> Chọn 1 (4 đơn), 2 (8 đơn), hoặc 3 (15 đơn) tùy nhu cầu thử nghiệm.
+
+* Bước 2 (Chạy thuật toán):
+  - Nhập phím [2] -> Xem lộ trình & tổng quãng đường bằng Thuật toán Tham lam.
+  - Nhập phím [3] -> Xem lộ trình tối ưu tuyệt đối bằng Thuật toán Nhánh cận.
+
+* Bước 3 (So sánh & Xuất báo cáo):
+  - Nhập phím [4] -> Chương trình tự động đo thời gian chạy và xuất file so sánh kết quả ra thư mục: KetQua/BaoCaoSoSanh.csv.
+
+* Bước 4 (Thoát):
+  - Nhập phím [0] để đóng phần mềm.
+
+------------------------------------------------------------------------
+IV. XỬ LÝ LỖI THƯỜNG GẶP
+- Lỗi "Cannot open file": Kiểm tra xem bạn đã mở chương trình từ thư mục gốc hay chưa, không được chạy file .exe trực tiếp từ bên trong thư mục CaiDat.
+- Lỗi "g++ is not recognized": Máy tính chưa cài MinGW/GCC hoặc chưa thêm C++ vào biến môi trường (Environment Variables). Nên dùng phần mềm Dev-C++ để chạy trực tiếp cho đơn giản.
+========================================================================
