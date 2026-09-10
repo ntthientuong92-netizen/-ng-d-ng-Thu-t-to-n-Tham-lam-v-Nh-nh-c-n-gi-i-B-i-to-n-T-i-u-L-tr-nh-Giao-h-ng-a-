@@ -1,0 +1,90 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+// Cấu trúc lưu tọa độ điểm giao/kho
+struct Point {
+    int id;
+    string name;
+    double lat;
+    double lon;
+};
+
+// Hàm tính khoảng cách Haversine giữa 2 tọa độ (đơn vị: km)
+double haversine(double lat1, double lon1, double lat2, double lon2) {
+    double R = 6371.0; // Bán kính Trái Đất (km)
+    double dLat = (lat2 - lat1) * M_PI / 180.0;
+    double dLon = (lon2 - lon1) * M_PI / 180.0;
+
+    lat1 = lat1 * M_PI / 180.0;
+    lat2 = lat2 * M_PI / 180.0;
+
+    double a = sin(dLat / 2) * sin(dLat / 2) +
+               sin(dLon / 2) * sin(dLon / 2) * cos(lat1) * cos(lat2);
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+    return R * c;
+}
+
+bool checkDataValidity(const string& filename, int expectedOrders) {
+    ifstream file(filename);
+    if (!file.is_open()) {
+        cerr << "[ERROR] Khong the mo file: " << filename << endl;
+        return false;
+    }
+
+    int n;
+    if (!(file >> n)) {
+        cerr << "[ERROR] Lỗi dinh dang file: Khong doc duoc so luong don hang." << endl;
+        return false;
+    }
+
+    if (n != expectedOrders) {
+        cerr << "[WARNING] So luong don hang doc duoc (" << n 
+             << ") khac voi ky vọng (" << expectedOrders << ")." << endl;
+    }
+
+    vector<Point> points(n + 1); // n đơn + 1 kho
+    for (int i = 0; i <= n; ++i) {
+        if (!(file >> points[i].id >> points[i].lat >> points[i].lon)) {
+            cerr << "[ERROR] Loi dinh dang du lieu tai dong " << i + 2 << endl;
+            return false;
+        }
+        // Kiểm tra phạm vi tọa độ TP.HCM (Kinh độ ~106.3 - 106.9, Vĩ độ ~10.3 - 10.9)
+        if (points[i].lat < 10.0 || points[i].lat > 11.5 || 
+            points[i].lon < 106.0 || points[i].lon > 107.5) {
+            cerr << "[WARNING] Toa do diem ID " << points[i].id 
+                 << " co the nam ngoai khu vuc TP.HCM (" 
+                 << points[i].lat << ", " << points[i].lon << ")" << endl;
+        }
+    }
+
+    // Kiểm tra tọa độ trùng lặp
+    for (int i = 0; i <= n; ++i) {
+        for (int j = i + 1; j <= n; ++j) {
+            if (abs(points[i].lat - points[j].lat) < 1e-6 && 
+                abs(points[i].lon - points[j].lon) < 1e-6) {
+                cerr << "[WARNING] Phat hien 2 diem trung toa do: ID " 
+                     << points[i].id << " va ID " << points[j].id << endl;
+            }
+        }
+    }
+
+    cout << "=> File " << filename << " hop le! So diem: " << n + 1 
+         << " (1 Kho + " << n << " don hang)." << endl;
+
+    file.close();
+    return true;
+}
+
+int main() {
+    cout << "=== KIEM TRA TINH HOP LE CUADU LIEU ===" << endl;
+    checkDataValidity("DungLieu/TapDuLieu_Nho_4Don.txt", 4);
+    checkDataValidity("DungLieu/TapDuLieu_Vua_8Don.txt", 8);
+    checkDataValidity("DungLieu/TapDuLieu_Lon_15Don.txt", 15);
+    return 0;
+}
