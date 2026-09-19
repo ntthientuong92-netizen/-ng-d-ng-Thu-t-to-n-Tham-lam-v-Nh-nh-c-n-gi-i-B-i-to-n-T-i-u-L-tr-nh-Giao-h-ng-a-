@@ -1,10 +1,10 @@
-#include "../KhaiBao/DuLieu.h"
+#include "../KhaiBao/DocDuLieu.h"
 
 // Ghi chú: tọa độ (x, y) là tọa độ quy đổi trên hệ trục phẳng (đơn vị km),
 // được ước lượng tương đối theo vị trí địa lý thực tế của các khu vực nhằm
 // phục vụ mục đích mô phỏng và đo hiệu năng thuật toán trong đề tài.
 
-std::vector<DiemGiao> TaoBoDuLieu1() {
+std::vector<DiaDiem> TaoBoDuLieu1() {
     return {
         {0, "Tiem banh Goc Bep Me Bap (Thuan An)",  0.0,  0.0},
         {1, "Di An",                                 4.5,  1.2},
@@ -17,7 +17,7 @@ std::vector<DiemGiao> TaoBoDuLieu1() {
     };
 }
 
-std::vector<DiemGiao> TaoBoDuLieu2() {
+std::vector<DiaDiem> TaoBoDuLieu2() {
     return {
         {0, "Tiem banh Goc Bep Me Bap (Thuan An)",  0.0,  0.0},
         {1, "Di An",                                 4.5,  1.2},
@@ -32,7 +32,7 @@ std::vector<DiemGiao> TaoBoDuLieu2() {
     };
 }
 
-std::vector<DiemGiao> TaoBoDuLieu3() {
+std::vector<DiaDiem> TaoBoDuLieu3() {
     return {
         {0,  "Tiem banh Goc Bep Me Bap (Thuan An)", 0.0,   0.0},
         {1,  "Di An",                                4.5,   1.2},
@@ -48,3 +48,4 @@ std::vector<DiemGiao> TaoBoDuLieu3() {
         {11, "Hoc Mon",                               1.0,  -6.5},
     };
 }
+
